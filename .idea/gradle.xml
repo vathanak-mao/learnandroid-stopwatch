@@ -10,9 +10,9 @@
         <option name="gradleHome" value="/usr/local/gradle-7.5.1" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/lib" />
+            <option value="/media/vathanak/Data/Workspace/stopwatch" />
+            <option value="/media/vathanak/Data/Workspace/stopwatch/app" />
+            <option value="/media/vathanak/Data/Workspace/stopwatch/lib" />
           </set>
         </option>
       </GradleProjectSettings>

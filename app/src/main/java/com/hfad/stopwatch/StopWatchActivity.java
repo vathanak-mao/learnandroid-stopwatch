@@ -18,7 +18,7 @@ public class StopWatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
 
-        runTimer();
+        runTimerWithError();
     }
 
     public void onClickStart(View view) {
@@ -53,5 +53,33 @@ public class StopWatchActivity extends AppCompatActivity {
                 handler.postDelayed(this, 1000);
             }
         });
+    }
+
+    private void runTimerWithError() {
+        final TextView textView = findViewById(R.id.time_view);
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    int hours = seconds / 3600;
+                    int minutes = (seconds % 3600) / 60;
+                    int secs = seconds % 60;
+                    String time = String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, secs);
+                    textView.setText(time);
+
+                    if (running) {
+                        seconds++;
+                    }
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch(InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
     }
 }
